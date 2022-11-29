@@ -5,13 +5,13 @@ from src.utils import display_image
 
 def get_average_image(target_img: np.ndarray, base_img: np.ndarray, alpha = 0.5, show = False) -> np.ndarray:
     """
-	Find the weighted average of the image.
-	:param target_img: The input image represented as numpy array.
+    Find the weighted average of the image.
+    :param target_img: The input image represented as numpy array.
     :param base_img: The image of the empty beach represented as numpy array.
     :param alpha: Weight parameter for calculating how much of the input image will appear in the average.
-	:param show: Parameter indicating whether to show the results or not.
-	:return: The weighted average of the input images.
-	"""
+    :param show: Parameter indicating whether to show the results or not.
+    :return: The weighted average of the input images.
+    """
     beta = 1 - alpha
     avg_img = cv2.addWeighted(target_img, alpha, base_img, beta, 0.0)
     if show:
@@ -22,16 +22,16 @@ def get_average_image(target_img: np.ndarray, base_img: np.ndarray, alpha = 0.5,
 
 def colorspace_distance_mask(target_img: np.ndarray, base_img: np.ndarray, thresh: int, show = False, morph = False) -> np.ndarray:
     """
-	Find the difference between the base and target RGB image in each color channel
+    Find the difference between the base and target RGB image in each color channel
     and return the combined results as a single channel mask.
-	:param target_img: The averaged input image represented as numpy array.
+    :param target_img: The averaged input image represented as numpy array.
     :param base_img: The image of the empty beach represented as numpy array.
     :param thresh: Parameter to determine acceptable distances in all the color channels.
-	:param show: Parameter indicating whether to show the results or not.
+    :param show: Parameter indicating whether to show the results or not.
     :param morph: Parameter indicating whether to use morphological processing on the output
     image
-	:return: The single channel mask indicating differences in each color channel.
-	"""
+    :return: The single channel mask indicating differences in each color channel.
+    """
     diff = np.zeros_like(target_img)
     diff_single= np.zeros_like(target_img[:,:,0])
     for i in range(3):
