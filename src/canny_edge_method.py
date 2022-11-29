@@ -5,17 +5,17 @@ from src.utils import display_image, binarize_by_otsu
 
 def get_canny_edges(target_img: np.ndarray, base_img: np.ndarray, otsu = False, normalize = False, show = False) -> np.ndarray:
     """
-	Find the Canny edges from difference between the base empty beach image and
+    Find the Canny edges from difference between the base empty beach image and
     target and return the combined results as a single channel mask.
-	:param target_img: The input image represented as numpy array.
+    :param target_img: The input image represented as numpy array.
     :param base_img: The image of the empty beach represented as numpy array.
     :param otsu: Parameter to determine whether to apply otsu binarization before edge detetction.
     :param normalize: Parameter to determine whether to normalize before edge detetction.
-	:param show: Parameter indicating whether to show the results or not.
+    :param show: Parameter indicating whether to show the results or not.
     :param morph: Parameter indicating whether to use morphological processing on the output
     image
-	:return: The single channel mask including edges from the image differences.
-	"""
+    :return: The single channel mask including edges from the image differences.
+    """
     x = cv2.cvtColor(target_img, cv2.COLOR_BGR2GRAY) # x is the target image
     y = cv2.cvtColor(base_img, cv2.COLOR_BGR2GRAY)   # y is the base image
 
