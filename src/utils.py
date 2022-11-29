@@ -4,10 +4,10 @@ import cv2
 
 def display_image(input_img: np.ndarray):
     """
-	Utility function to display the image (BGR) from OpenCV
+    Utility function to display the image (BGR) from OpenCV
     in the proper way.
-	:param input_img: The input image represented as numpy array in BGR or GRAYSCALE colors.
-	"""
+    :param input_img: The input image represented as numpy array in BGR or GRAYSCALE colors.
+    """
     if len(input_img.shape) == 3:
         plt.imshow(cv2.cvtColor(input_img, cv2.COLOR_BGR2RGB))
     else:
@@ -53,20 +53,20 @@ def binarize_by_otsu(img: np.ndarray) -> np.ndarray:
 def get_bboxes_and_points(img:np.ndarray, mask:np.ndarray, cutoff = 450, minBox = None, maxBox = None, minRatio = None, 
                                         maxRatio = None, draw_contours = False, draw_boxes = False, return_image = False):
     """
-	Finds the bounding boxes and the central point by finding contours from
+    Finds the bounding boxes and the central point by finding contours from
     the input mask. Optionally, draws the contours or boxes on the input image
     that corresponds to the mask.
-	:param img: Input image corresponding to the mask.
+    :param img: Input image corresponding to the mask.
     :param mask: The mask for finding contours.
     :param cutoff: Cutoff height of the image that is not considered.
-	:param minBox: Minimum acceptable area for the bounding box.
+    :param minBox: Minimum acceptable area for the bounding box.
     :param maxBox: Maximum acceptable area for the bounding box.
     :param minRatio: Minimum aspect ratio of the boxes.
     :param maxRatio: Maximum aspect ratio of the boxes.
     :param draw_contours: Determines whether to draw and show the detected contours.
     :param draw_boxes: Determines whether to draw and show the detected boxes.
     :param return_image: Determines whether to return the drawn over image.
-	:return: 
+    :return: 
         List of the detected boxes
         List of the detected points
         Drawn over image or 0
